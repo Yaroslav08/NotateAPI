@@ -1,8 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "pWoQaEjcokcZt5Fk/YWVsmu6A/o5BK1qHqEtiDBp/GSTVqjoevoWHpVwXe+B+SaOWmf5tfFCDuOwCP9fDVSpYw==",
+  "dgSpecHash": "CSgaKUk0uFjiyC81YsUTEueFhjfiMzasZR22Tg9TlK1Q0RHUuwOZWIVlWN4fC0qV4zqvbcD+WOltEjc+XyqRQA==",
   "success": true,
   "projectFilePath": "D:\\Programming\\Real Project\\Notate\\NotateAPI\\NotateAPI\\NotateAPI\\NotateAPI.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "C:\\Users\\Yarik\\.nuget\\packages\\newtonsoft.json\\12.0.3\\newtonsoft.json.12.0.3.nupkg.sha512"
+  ],
   "logs": []
 }
