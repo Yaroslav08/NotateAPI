@@ -1,6 +1,8 @@
 ﻿using Newtonsoft.Json;
 using NotateAPI.Configure;
 using NotateAPI.Exceptions;
+using NotateAPI.Models.Entity;
+using NotateAPI.Models.Helpers.UserService;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -21,9 +23,27 @@ namespace NotateAPI.Services
             req.SetAccessToken(AccessToken);
         }
 
+        public async Task<string> DeleteMeFromSystem()
+        {
+            var res = await req.DeleteAsync("Delete");
+            if (res.IsSuccess)
+                return "OK";
+            else
+                throw new DeleteUserException(res.Error);
+        }
+
+        public async Task<string> Edit(UserEditModel model)
+        {
+            var res = await req.PutAsync("Edit", model);
+            if (res.IsSuccess)
+                return "OK";
+            else
+                throw new EditUserException(res.Error);
+        }
+
         public async Task<User> GetUserAsync(int Id)
         {
-            var res = await req.GetAsync(url.User + $"{Id}");
+            var res = await req.GetAsync($"{Id}");
             if (res.IsSuccess)
                 return JsonConvert.DeserializeObject<User>(res.Data.ToString());
             else
@@ -32,9 +52,27 @@ namespace NotateAPI.Services
 
         public async Task<User> GetUserAsync(string Username)
         {
-            var res = await req.GetAsync(url.User + $"@{Username}");
+            var res = await req.GetAsync($"@{Username}");
             if (res.IsSuccess)
                 return JsonConvert.DeserializeObject<User>(res.Data.ToString());
+            else
+                throw new GetUserException(res.Error);
+        }
+
+        public async Task<string> EditUsername(string Username)
+        {
+            var res = await req.PutAsync("EditUsername", new ChangeUsernameModel { Username = Username });
+            if (res.IsSuccess)
+                return "OK";
+            else
+                throw new EditUserException(res.Error);
+        }
+
+        public async Task<List<UserShortModel>> SearchUsers(string Name, int Offset = 0, int Count = 20)
+        {
+            var res = await req.GetAsync($"Search/{Name}?Offset={Offset}&Count={Count}");
+            if (res.IsSuccess)
+                return JsonConvert.DeserializeObject<List<UserShortModel>>(res.Data.ToString());
             else
                 throw new GetUserException(res.Error);
         }
