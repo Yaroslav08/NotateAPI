@@ -78,7 +78,7 @@ namespace NotateAPI
             await Auth(new LoginModel(Login, Password));
         }
 
-        public async Task<bool> Auth(LoginModel model)
+        public async Task Auth(LoginModel model)
         {
             var res = await req.PostAsync("auth", model);
             if (res.IsSuccess)
@@ -89,7 +89,6 @@ namespace NotateAPI
                 userService = new UserService(accessToken);
                 noteService = new NoteService(accessToken);
                 commentService = new CommentService(accessToken);
-                return true;
             }
             else
                 throw new APIAuthException(res.Error);
@@ -103,6 +102,20 @@ namespace NotateAPI
             userService = new UserService(accessToken);
             noteService = new NoteService(accessToken);
             commentService = new CommentService(accessToken);
+        }
+
+        public async Task<bool> Register(string Fullname, string Login, string Password)
+        {
+            return await Register(new RegisterModel(Fullname, Login, Password));
+        }
+
+        public async Task<bool> Register(RegisterModel model)
+        {
+            var res = await req.PostAsync("Register", model);
+            if (res.IsSuccess)
+                return res.IsSuccess;
+            else
+                throw new APIAuthException(res.Error);
         }
     }
 }

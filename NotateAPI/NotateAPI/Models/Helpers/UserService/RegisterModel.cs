@@ -6,6 +6,12 @@ namespace NotateAPI.Models.Helpers.UserService
 {
     public class RegisterModel
     {
+        public RegisterModel(string Fullname, string Log, string Pass)
+        {
+            FullName = Fullname;
+            Login = Log;
+            Password = Pass;
+        }
         [Required, MinLength(3), MaxLength(70)]
         public string FullName { get; set; }
         [Required, MinLength(10), MaxLength(100)]
