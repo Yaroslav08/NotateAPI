@@ -6,7 +6,7 @@ namespace NotateAPI.Services
 {
     public class CommentService
     {
-        public string accessToken;
+        private string accessToken;
         private BaseUrl url;
         private WebRequest req;
         public CommentService(string AccessToken)

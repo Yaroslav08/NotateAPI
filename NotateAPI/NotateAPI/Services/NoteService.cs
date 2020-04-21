@@ -12,7 +12,7 @@ namespace NotateAPI.Services
 {
     public class NoteService
     {
-        public string accessToken;
+        private string accessToken;
         private BaseUrl url;
         private WebRequest req;
         public NoteService(string AccessToken)
