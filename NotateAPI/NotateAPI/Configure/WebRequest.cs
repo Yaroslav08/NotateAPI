@@ -85,5 +85,22 @@ namespace NotateAPI.Configure
                 throw new APIReadResponseException(ex.Message + "\n" + Response);
             }
         }
+
+        public async Task<Response> DeleteAsync(string Url, object Data)
+        {
+            string Response = null;
+            try
+            {
+                var con = JsonConvert.SerializeObject(Data);
+                var content = new StringContent(con, Encoding.UTF8, "application/json");
+                content.Headers.ContentType = new MediaTypeHeaderValue("application/json");
+                Response = await httpClient.PutAsync(Url, content).Result.Content.ReadAsStringAsync();
+                return JsonConvert.DeserializeObject<Response>(Response);
+            }
+            catch(Exception ex)
+            {
+                throw new APIReadResponseException(ex.Message + "\n" + Response);
+            }
+        }
     }
 }

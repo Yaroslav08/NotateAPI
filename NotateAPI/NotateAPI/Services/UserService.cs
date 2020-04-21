@@ -29,7 +29,7 @@ namespace NotateAPI.Services
             if (res.IsSuccess)
                 return "OK";
             else
-                throw new DeleteUserException(res.Error);
+                throw new UserException(res.Error);
         }
 
         public async Task<string> Edit(UserEditModel model)
@@ -38,7 +38,7 @@ namespace NotateAPI.Services
             if (res.IsSuccess)
                 return "OK";
             else
-                throw new EditUserException(res.Error);
+                throw new UserException(res.Error);
         }
 
         public async Task<User> GetUserAsync(int Id)
@@ -47,7 +47,7 @@ namespace NotateAPI.Services
             if (res.IsSuccess)
                 return JsonConvert.DeserializeObject<User>(res.Data.ToString());
             else
-                throw new GetUserException(res.Error);
+                throw new UserException(res.Error);
         }
 
         public async Task<User> GetUserAsync(string Username)
@@ -56,16 +56,16 @@ namespace NotateAPI.Services
             if (res.IsSuccess)
                 return JsonConvert.DeserializeObject<User>(res.Data.ToString());
             else
-                throw new GetUserException(res.Error);
+                throw new UserException(res.Error);
         }
 
-        public async Task<string> EditUsername(string Username)
+        public async Task<string> EditUsername(string NewUsername)
         {
-            var res = await req.PutAsync("EditUsername", new ChangeUsernameModel { Username = Username });
+            var res = await req.PutAsync("EditUsername", new ChangeUsernameModel { Username = NewUsername });
             if (res.IsSuccess)
                 return "OK";
             else
-                throw new EditUserException(res.Error);
+                throw new UserException(res.Error);
         }
 
         public async Task<List<UserShortModel>> SearchUsers(string Name, int Offset = 0, int Count = 20)
@@ -74,7 +74,7 @@ namespace NotateAPI.Services
             if (res.IsSuccess)
                 return JsonConvert.DeserializeObject<List<UserShortModel>>(res.Data.ToString());
             else
-                throw new GetUserException(res.Error);
+                throw new UserException(res.Error);
         }
     }
 }

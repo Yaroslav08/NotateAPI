@@ -4,8 +4,8 @@ using System.Text;
 
 namespace NotateAPI.Exceptions
 {
-    public class DeleteUserException:Exception
+    public class NoteException:Exception
     {
-        public DeleteUserException(string Message) : base(Message) { }
+        public NoteException(string Message):base(Message) { }
     }
 }

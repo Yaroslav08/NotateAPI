@@ -4,8 +4,8 @@ using System.Text;
 
 namespace NotateAPI.Exceptions
 {
-    public class EditUserException :Exception
+    public class UserException:Exception
     {
-        public EditUserException(string Message) : base(Message) { }
+        public UserException(string Message) : base(Message) { }
     }
 }
