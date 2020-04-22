@@ -117,5 +117,14 @@ namespace NotateAPI
             else
                 throw new APIAuthException(res.Error);
         }
+
+        public async Task<bool> Confirm(ConfirmModel model)
+        {
+            var res = await req.PostAsync("Confirm", model);
+            if (res.IsSuccess)
+                return true;
+            else
+                throw new APIAuthException(res.Error);
+        }
     }
 }
