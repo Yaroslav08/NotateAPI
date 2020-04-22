@@ -1,6 +1,0 @@
-D:\Programming\Real Project\Notate\NotateAPI\NotateAPI\NotateAPI\bin\Debug\netcoreapp3.1\NotateAPI.deps.json
-D:\Programming\Real Project\Notate\NotateAPI\NotateAPI\NotateAPI\bin\Debug\netcoreapp3.1\NotateAPI.dll
-D:\Programming\Real Project\Notate\NotateAPI\NotateAPI\NotateAPI\obj\Debug\netcoreapp3.1\NotateAPI.AssemblyInfoInputs.cache
-D:\Programming\Real Project\Notate\NotateAPI\NotateAPI\NotateAPI\obj\Debug\netcoreapp3.1\NotateAPI.AssemblyInfo.cs
-D:\Programming\Real Project\Notate\NotateAPI\NotateAPI\NotateAPI\obj\Debug\netcoreapp3.1\NotateAPI.csprojAssemblyReference.cache
-D:\Programming\Real Project\Notate\NotateAPI\NotateAPI\NotateAPI\obj\Debug\netcoreapp3.1\NotateAPI.csproj.CoreCompileInputs.cache
