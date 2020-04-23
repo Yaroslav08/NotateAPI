@@ -16,5 +16,6 @@ namespace NotateAPI.Services
             req = new WebRequest(accessToken, url.Note);
             req.SetAccessToken(AccessToken);
         }
+
     }
 }

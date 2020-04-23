@@ -5,8 +5,8 @@ namespace NotateAPI.Configure
 {
     public class BaseUrl
     {
-        private const string LocalHost = "https://localhost:5001/api/";
-        private const string Server = "https://api.notate.com/api/";
+        private const string LocalHost = "https://localhost:5001/api";
+        private const string Server = "https://api.notate.com/api";
 
         private string UserUrl;
         private string NoteUrl;
@@ -14,9 +14,9 @@ namespace NotateAPI.Configure
 
         public BaseUrl()
         {
-            UserUrl = $"{LocalHost}user/";
-            NoteUrl = $"{LocalHost}note/";
-            CommentUrl = $"{LocalHost}comment/";
+            UserUrl = $"{LocalHost}/user/";
+            NoteUrl = $"{LocalHost}/note/";
+            CommentUrl = $"{LocalHost}/comment/";
         }
 
         public string User => UserUrl;
