@@ -23,7 +23,7 @@ namespace NotateAPI.Services
             req.SetAccessToken(AccessToken);
         }
 
-        public async Task<string> CreateNote(CreateNoteModel model)
+        public async Task<string> CreateNoteAsync(CreateNoteModel model)
         {
             var res = await req.PostAsync("Create", model);
             if (res.IsSuccess)
@@ -32,7 +32,7 @@ namespace NotateAPI.Services
                 throw new NoteException(res.Error);
         }
 
-        public async Task<string> DeleteNote(long NoteId)
+        public async Task<string> DeleteNoteAsync(long NoteId)
         {
             var res = await req.DeleteAsync("Delete", new DeleteNoteModel { NoteId = NoteId });
             if (res.IsSuccess)
@@ -41,7 +41,7 @@ namespace NotateAPI.Services
                 throw new NoteException(res.Error);
         }
 
-        public async Task<string> EditNote(EditNoteModel model)
+        public async Task<string> EditNoteAsync(EditNoteModel model)
         {
             var res = await req.PutAsync("Edit", model);
             if (res.IsSuccess)
@@ -50,7 +50,7 @@ namespace NotateAPI.Services
                 throw new NoteException(res.Error);
         }
 
-        public async Task<List<Note>> GetByHeader(string Header, int Offset = 0, int Count = 20)
+        public async Task<List<Note>> GetByHeaderAsync(string Header, int Offset = 0, int Count = 20)
         {
             var res = await req.GetAsync($"GetByHeader/{Header}?Offset={Offset}&Count={Count}");
             if (res.IsSuccess)
@@ -59,7 +59,7 @@ namespace NotateAPI.Services
                 throw new NoteException(res.Error);
         }
 
-        public async Task<List<Note>> GetByText(string Text, int Offset = 0, int Count = 20)
+        public async Task<List<Note>> GetByTextAsync(string Text, int Offset = 0, int Count = 20)
         {
             var res = await req.GetAsync($"GetByText/{Text}?Offset={Offset}&Count={Count}");
             if (res.IsSuccess)
@@ -68,7 +68,7 @@ namespace NotateAPI.Services
                 throw new NoteException(res.Error);
         }
 
-        public async Task<Note> GetById(long Id)
+        public async Task<Note> GetByIdAsync(long Id)
         {
             var res = await req.GetAsync($"{Id}");
             if (res.IsSuccess)
@@ -77,7 +77,7 @@ namespace NotateAPI.Services
                 throw new NoteException(res.Error);
         }
 
-        public async Task<Note> GetPrivate(long Id, string Key)
+        public async Task<Note> GetPrivateAsync(long Id, string Key)
         {
             var res = await req.GetAsync($"GetPrivate/{Id}/{Key}");
             if (res.IsSuccess)
@@ -86,7 +86,7 @@ namespace NotateAPI.Services
                 throw new NoteException(res.Error);
         }
 
-        public async Task<List<Note>> GetUserNotes(int UserId, int Offset = 0, int Count = 20)
+        public async Task<List<Note>> GetUserNotesAsync(int UserId, int Offset = 0, int Count = 20)
         {
             var res = await req.GetAsync($"GetUserNotes/{UserId}?Offset={Offset}&Count={Count}");
             if (res.IsSuccess)
@@ -95,7 +95,7 @@ namespace NotateAPI.Services
                 throw new NoteException(res.Error);
         }
 
-        public async Task<List<Note>> GetMyNotes(bool All, int Offset = 0, int Count = 20)
+        public async Task<List<Note>> GetMyNotesAsync(bool All, int Offset = 0, int Count = 20)
         {
             var res = await req.GetAsync($"GetMy/{All}?Offset={Offset}&Count={Count}");
             if (res.IsSuccess)
