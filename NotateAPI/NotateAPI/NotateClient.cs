@@ -21,6 +21,7 @@ namespace NotateAPI
         private BaseUrl url;
         private WebRequest req;
         private User user;
+        private int id;
 
         public UserService UserService
         {
@@ -56,6 +57,7 @@ namespace NotateAPI
         public bool IsAuthorize => isAuthorize;
         public string AccessToken => accessToken;
         public User User => user;
+        public int Id => id;
 
         public static NotateClient Instance()
         {
@@ -85,7 +87,7 @@ namespace NotateAPI
 
         public async Task AuthAsync(string Login, string Password)
         {
-            await Auth(new LoginModel(Login, Password));
+            await AuthAsync(new LoginModel(Login, Password));
         }
 
         public async Task AuthAsync(LoginModel model)
@@ -116,7 +118,7 @@ namespace NotateAPI
 
         public async Task<bool> RegisterAsync(string Fullname, string Login, string Password)
         {
-            return await Register(new RegisterModel(Fullname, Login, Password));
+            return await RegisterAsync(new RegisterModel(Fullname, Login, Password));
         }
 
         public async Task<bool> RegisterAsync(RegisterModel model)
