@@ -23,7 +23,7 @@ namespace NotateAPI.Services
             req.SetAccessToken(AccessToken);
         }
 
-        public async Task<List<Comment>> GetComments(long NoteId, int Offset = 0, int Count = 20)
+        public async Task<List<Comment>> GetCommentsAsync(long NoteId, int Offset = 0, int Count = 20)
         {
             var res = await req.GetAsync($"GetComments/{NoteId}?Offset={Offset}&Count={Count}");
             if (res.IsSuccess)
@@ -32,7 +32,7 @@ namespace NotateAPI.Services
                 throw new CommentException(res.Error);
         }
 
-        public async Task<string> CreateComment(string Text, long NoteId)
+        public async Task<string> CreateCommentAsync(string Text, long NoteId)
         {
             var res = await req.PostAsync("Create", new CreateCommentModel { NoteId = NoteId, Text = Text });
             if (res.IsSuccess)
@@ -41,7 +41,7 @@ namespace NotateAPI.Services
                 throw new CommentException(res.Error);
         }
 
-        public async Task<string> EditComment(EditCommentModel model)
+        public async Task<string> EditCommentAsync(EditCommentModel model)
         {
             var res = await req.PutAsync("Edit", model);
             if (res.IsSuccess)
@@ -50,7 +50,7 @@ namespace NotateAPI.Services
                 throw new CommentException(res.Error);
         }
 
-        public async Task<string> DeleteComment(DeleteCommentModel model)
+        public async Task<string> DeleteCommentAsync(DeleteCommentModel model)
         {
             var res = await req.DeleteAsync("Delete", model);
             if (res.IsSuccess)
