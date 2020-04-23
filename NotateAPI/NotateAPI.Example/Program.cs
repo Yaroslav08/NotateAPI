@@ -11,7 +11,7 @@ namespace NotateAPI.Example
         static async Task Main(string[] args)
         {
             NotateClient client = NotateClient.Instance();
-            
+
         }
     }
 }

@@ -83,12 +83,12 @@ namespace NotateAPI
             commentService = new CommentService(accessToken);
         }
 
-        public async Task Auth(string Login, string Password)
+        public async Task AuthAsync(string Login, string Password)
         {
             await Auth(new LoginModel(Login, Password));
         }
 
-        public async Task Auth(LoginModel model)
+        public async Task AuthAsync(LoginModel model)
         {
             var res = await req.PostAsync("auth", model);
             if (res.IsSuccess)
@@ -114,12 +114,12 @@ namespace NotateAPI
             commentService = new CommentService(accessToken);
         }
 
-        public async Task<bool> Register(string Fullname, string Login, string Password)
+        public async Task<bool> RegisterAsync(string Fullname, string Login, string Password)
         {
             return await Register(new RegisterModel(Fullname, Login, Password));
         }
 
-        public async Task<bool> Register(RegisterModel model)
+        public async Task<bool> RegisterAsync(RegisterModel model)
         {
             var res = await req.PostAsync("Register", model);
             if (res.IsSuccess)
@@ -128,7 +128,7 @@ namespace NotateAPI
                 throw new APIAuthException(res.Error);
         }
 
-        public async Task<bool> Confirm(ConfirmModel model)
+        public async Task<bool> ConfirmAsync(ConfirmModel model)
         {
             var res = await req.PostAsync("Confirm", model);
             if (res.IsSuccess)
