@@ -2,6 +2,7 @@
 using NotateAPI.Configure;
 using NotateAPI.Exceptions;
 using NotateAPI.Models.Entity;
+using NotateAPI.Models.Helpers.CommentService;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -31,6 +32,31 @@ namespace NotateAPI.Services
                 throw new CommentException(res.Error);
         }
 
+        public async Task<string> CreateComment(string Text, long NoteId)
+        {
+            var res = await req.PostAsync("Create", new CreateCommentModel { NoteId = NoteId, Text = Text });
+            if (res.IsSuccess)
+                return "OK";
+            else
+                throw new CommentException(res.Error);
+        }
 
+        public async Task<string> EditComment(EditCommentModel model)
+        {
+            var res = await req.PutAsync("Edit", model);
+            if (res.IsSuccess)
+                return "OK";
+            else
+                throw new CommentException(res.Error);
+        }
+
+        public async Task<string> DeleteComment(DeleteCommentModel model)
+        {
+            var res = await req.DeleteAsync("Delete", model);
+            if (res.IsSuccess)
+                return "OK";
+            else
+                throw new CommentException(res.Error);
+        }
     }
 }
