@@ -72,6 +72,16 @@ namespace NotateAPI
             url = new BaseUrl();
             req = new WebRequest(null, url.User);
         }
+        public NotateClient(string AccessToken)
+        {
+            isAuthorize = true;
+            accessToken = AccessToken;
+            url = new BaseUrl();
+            req = new WebRequest(null, url.User);
+            userService = new UserService(accessToken);
+            noteService = new NoteService(accessToken);
+            commentService = new CommentService(accessToken);
+        }
 
         public async Task Auth(string Login, string Password)
         {
