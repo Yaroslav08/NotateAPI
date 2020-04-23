@@ -32,9 +32,9 @@ namespace NotateAPI.Services
                 throw new NoteException(res.Error);
         }
 
-        public async Task<string> DeleteNote(CreateNoteModel model)
+        public async Task<string> DeleteNote(long NoteId)
         {
-            var res = await req.DeleteAsync("Delete", model);
+            var res = await req.DeleteAsync("Delete", new DeleteNoteModel { NoteId = NoteId });
             if (res.IsSuccess)
                 return "OK";
             else
