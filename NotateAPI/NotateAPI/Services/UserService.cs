@@ -23,7 +23,7 @@ namespace NotateAPI.Services
             req.SetAccessToken(AccessToken);
         }
 
-        public async Task<string> DeleteMeFromSystem()
+        public async Task<string> DeleteMyAccountAsync()
         {
             var res = await req.DeleteAsync("Delete");
             if (res.IsSuccess)
@@ -32,7 +32,7 @@ namespace NotateAPI.Services
                 throw new UserException(res.Error);
         }
 
-        public async Task<string> Edit(UserEditModel model)
+        public async Task<string> EditAsync(UserEditModel model)
         {
             var res = await req.PutAsync("Edit", model);
             if (res.IsSuccess)
@@ -59,7 +59,7 @@ namespace NotateAPI.Services
                 throw new UserException(res.Error);
         }
 
-        public async Task<string> EditUsername(string NewUsername)
+        public async Task<string> EditUsernameAsync(string NewUsername)
         {
             var res = await req.PutAsync("EditUsername", new ChangeUsernameModel { Username = NewUsername });
             if (res.IsSuccess)
@@ -68,7 +68,7 @@ namespace NotateAPI.Services
                 throw new UserException(res.Error);
         }
 
-        public async Task<List<UserShortModel>> SearchUsers(string Name, int Offset = 0, int Count = 20)
+        public async Task<List<UserShortModel>> SearchUsersAsync(string Name, int Offset = 0, int Count = 20)
         {
             var res = await req.GetAsync($"Search/{Name}?Offset={Offset}&Count={Count}");
             if (res.IsSuccess)
