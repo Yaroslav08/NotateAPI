@@ -1,4 +1,5 @@
-﻿using NotateAPI.Configure;
+﻿using Newtonsoft.Json;
+using NotateAPI.Configure;
 using NotateAPI.Exceptions;
 using NotateAPI.Models.Entity;
 using NotateAPI.Models.Helpers.UserService;
@@ -137,6 +138,18 @@ namespace NotateAPI
                 return true;
             else
                 throw new APIAuthException(res.Error);
+        }
+
+        public async Task<User> LoadProfile()
+        {
+            var res = await req.GetAsync("GetMe");
+            if (res.IsSuccess)
+            {
+                user = JsonConvert.DeserializeObject<User>(res.Data.ToString());
+                return user;
+            }
+            else
+                throw new UserException(res.Error);
         }
     }
 }
