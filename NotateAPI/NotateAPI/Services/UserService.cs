@@ -76,5 +76,15 @@ namespace NotateAPI.Services
             else
                 throw new UserException(res.Error);
         }
+
+        public async Task<User> GetMe()
+        {
+            var res = await req.GetAsync("GetMe");
+            if (res.IsSuccess)
+                return JsonConvert.DeserializeObject<User>(res.Data.ToString());
+            
+            else
+                throw new UserException(res.Error);
+        }
     }
 }
