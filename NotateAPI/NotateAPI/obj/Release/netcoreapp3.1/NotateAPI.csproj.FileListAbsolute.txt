@@ -1,0 +1,9 @@
+D:\Programming\Real Project\Notate\NotateAPI\NotateAPI\NotateAPI\bin\Release\netcoreapp3.1\NotateAPI.deps.json
+D:\Programming\Real Project\Notate\NotateAPI\NotateAPI\NotateAPI\bin\Release\netcoreapp3.1\NotateAPI.dll
+D:\Programming\Real Project\Notate\NotateAPI\NotateAPI\NotateAPI\bin\Release\netcoreapp3.1\NotateAPI.pdb
+D:\Programming\Real Project\Notate\NotateAPI\NotateAPI\NotateAPI\obj\Release\netcoreapp3.1\NotateAPI.csprojAssemblyReference.cache
+D:\Programming\Real Project\Notate\NotateAPI\NotateAPI\NotateAPI\obj\Release\netcoreapp3.1\NotateAPI.csproj.CoreCompileInputs.cache
+D:\Programming\Real Project\Notate\NotateAPI\NotateAPI\NotateAPI\obj\Release\netcoreapp3.1\NotateAPI.AssemblyInfoInputs.cache
+D:\Programming\Real Project\Notate\NotateAPI\NotateAPI\NotateAPI\obj\Release\netcoreapp3.1\NotateAPI.AssemblyInfo.cs
+D:\Programming\Real Project\Notate\NotateAPI\NotateAPI\NotateAPI\obj\Release\netcoreapp3.1\NotateAPI.dll
+D:\Programming\Real Project\Notate\NotateAPI\NotateAPI\NotateAPI\obj\Release\netcoreapp3.1\NotateAPI.pdb

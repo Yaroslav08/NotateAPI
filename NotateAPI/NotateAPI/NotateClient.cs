@@ -160,8 +160,7 @@ namespace NotateAPI
             try
             {
                 var client = new HttpClient();
-                client.BaseAddress = new Uri(url.User);
-                var res = await client.GetAsync("Test");
+                var res = await client.GetAsync($"{url.User}Test");
                 if (await res.Content.ReadAsStringAsync() == "Connection completed successfully!")
                     return true;
                 else
