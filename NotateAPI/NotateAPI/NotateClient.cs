@@ -6,6 +6,7 @@ using NotateAPI.Models.Helpers.UserService;
 using NotateAPI.Services;
 using System;
 using System.Collections.Generic;
+using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -93,6 +94,8 @@ namespace NotateAPI
 
         public async Task AuthAsync(LoginModel model)
         {
+            if (!await IsAvailable())
+                throw new UserException("Server isn`t available");
             var res = await req.PostAsync("auth", model);
             if (res.IsSuccess)
             {
@@ -150,6 +153,24 @@ namespace NotateAPI
             }
             else
                 throw new UserException(res.Error);
+        }
+
+        private async Task<bool> IsAvailable()
+        {
+            try
+            {
+                var client = new HttpClient();
+                client.BaseAddress = new Uri(url.User);
+                var res = await client.GetAsync("Test");
+                if (await res.Content.ReadAsStringAsync() == "Connection completed successfully!")
+                    return true;
+                else
+                    return false;
+            } catch(Exception ex)
+            {
+                if (ex.Message == "No connection could be made because the target machine actively refused it.") return false;
+                return false;
+            }
         }
     }
 }
