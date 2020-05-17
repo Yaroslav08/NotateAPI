@@ -55,5 +55,13 @@ namespace NotateAPI.Services
             else
                 throw new SpreadException(res.Error);
         }
+        public async Task<string> Read(ReadSpreadModel model)
+        {
+            var res = await req.PostAsync("Read", model);
+            if (res.IsSuccess)
+                return "OK";
+            else
+                throw new SpreadException(res.Error);
+        }
     }
 }
