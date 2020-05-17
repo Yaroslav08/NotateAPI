@@ -1,4 +1,6 @@
-﻿using NotateAPI.Configure;
+﻿using Newtonsoft.Json;
+using NotateAPI.Configure;
+using NotateAPI.Models.Entity;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -17,6 +19,13 @@ namespace NotateAPI.Services
             url = new BaseUrl();
             req = new WebRequest(accessToken, url.Note);
             req.SetAccessToken(AccessToken);
+        }
+
+        public async Task<List<Spread>> GetMySpreads()
+        {
+            var res = await req.GetAsync("GetMy");
+            if(res.IsSuccess)
+                return JsonConvert.DeserializeObject<List<Spread>>(res.Data.ToString());
         }
     }
 }
