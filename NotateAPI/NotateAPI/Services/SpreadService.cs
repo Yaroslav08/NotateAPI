@@ -2,6 +2,7 @@
 using NotateAPI.Configure;
 using NotateAPI.Exceptions;
 using NotateAPI.Models.Entity;
+using NotateAPI.Models.Helpers.SpreadService;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -35,6 +36,22 @@ namespace NotateAPI.Services
             var res = await req.GetAsync("GetSent");
             if(res.IsSuccess)
                 return JsonConvert.DeserializeObject<List<Spread>>(res.Data.ToString());
+            else
+                throw new SpreadException(res.Error);
+        }
+        public async Task<string> SendSpread(CreateSpreadModel model)
+        {
+            var res = await req.PostAsync("Create", model);
+            if (res.IsSuccess)
+                return "OK";
+            else
+                throw new SpreadException(res.Error);
+        }
+        public async Task<string> DeleteSpread(DeleteSpreadModel model)
+        {
+            var res = await req.DeleteAsync("Delete", model);
+            if (res.IsSuccess)
+                return "OK";
             else
                 throw new SpreadException(res.Error);
         }
