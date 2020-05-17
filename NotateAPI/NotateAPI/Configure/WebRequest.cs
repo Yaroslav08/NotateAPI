@@ -55,6 +55,17 @@ namespace NotateAPI.Configure
             catch(Exception ex) { throw new APIReadResponseException(ex.Message + "\n" + Response); }
         }
 
+        public async Task<Response> PostAsync(string Url)
+        {
+            string Response = null;
+            try
+            {
+                Response = await httpClient.PostAsync(Url, null).Result.Content.ReadAsStringAsync();
+                return JsonConvert.DeserializeObject<Response>(Response);
+            }
+            catch (Exception ex) { throw new APIReadResponseException(ex.Message + "\n" + Response); }
+        }
+
         public async Task<Response> PutAsync(string Url, object Data)
         {
             string Response = null;

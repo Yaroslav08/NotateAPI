@@ -63,5 +63,9 @@ namespace NotateAPI.Services
             else
                 throw new SpreadException(res.Error);
         }
+        public async Task<string> ReadAll()
+        {
+
+        }
     }
 }
