@@ -11,16 +11,19 @@ namespace NotateAPI.Configure
         private string UserUrl;
         private string NoteUrl;
         private string CommentUrl;
+        private string SpreadUrl;
 
         public BaseUrl()
         {
             UserUrl = $"{LocalHost}/user/";
             NoteUrl = $"{LocalHost}/note/";
             CommentUrl = $"{LocalHost}/comment/";
+            SpreadUrl = $"{LocalHost}/spread/";
         }
 
         public string User => UserUrl;
         public string Note => NoteUrl;
         public string Comment => CommentUrl;
+        public string Spread => SpreadUrl;
     }
 }
