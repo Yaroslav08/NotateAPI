@@ -1,5 +1,6 @@
 ﻿using Newtonsoft.Json;
 using NotateAPI.Configure;
+using NotateAPI.Exceptions;
 using NotateAPI.Models.Entity;
 using System;
 using System.Collections.Generic;
@@ -24,8 +25,18 @@ namespace NotateAPI.Services
         public async Task<List<Spread>> GetMySpreads()
         {
             var res = await req.GetAsync("GetMy");
+            if (res.IsSuccess)
+                return JsonConvert.DeserializeObject<List<Spread>>(res.Data.ToString());
+            else
+                throw new SpreadException(res.Error);
+        }
+        public async Task<List<Spread>> GetSentSpreads()
+        {
+            var res = await req.GetAsync("GetSent");
             if(res.IsSuccess)
                 return JsonConvert.DeserializeObject<List<Spread>>(res.Data.ToString());
+            else
+                throw new SpreadException(res.Error);
         }
     }
 }
