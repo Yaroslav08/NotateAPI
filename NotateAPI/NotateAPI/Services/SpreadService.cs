@@ -65,7 +65,11 @@ namespace NotateAPI.Services
         }
         public async Task<string> ReadAll()
         {
-
+            var res = await req.PostAsync("ReadAll");
+            if (res.IsSuccess)
+                return "OK";
+            else
+                throw new SpreadException(res.Error);
         }
     }
 }
